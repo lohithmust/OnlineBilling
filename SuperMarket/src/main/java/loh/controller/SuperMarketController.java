@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import loh.dao.ItemDao;
 import loh.dao.Login;
 import loh.dao.Register;
 import loh.dto.Cashier;
@@ -163,13 +165,31 @@ public class SuperMarketController {
 
 	}
 
+	List<Item> billedItems = new ArrayList<Item>();
+	double  total = 0;
 	@RequestMapping("/addItemBilling")
 	public ModelAndView addItemBilling(@RequestParam("itemcode") String itemcode,
 			@RequestParam("quantity") String quantity, HttpServletRequest request) {
-			System.out.println("hello");
-			
-			           
-		return new ModelAndView("billingpage","itemList", new Helper().addItemsSelected(itemcode,request));
 
+	  
+	  
+		HttpSession session = request.getSession(false);
+		int companyid = (int) session.getAttribute("companyid");
+		List<Item> items = new ItemDao().itemList(companyid);
+		for (Item item : items) {
+
+			if (item.getItemCode().equalsIgnoreCase(itemcode)) {
+				System.out.println("you can add");
+				total += item.getItemPrice();
+				billedItems.add(item);
+			}
+		}
+		System.out.println(billedItems.size());
+
+		ModelAndView mv = new ModelAndView("billingpage");
+		mv.addObject("itemList", billedItems);
+		mv.addObject("total", total);
+		
+		return mv;
 	}
 }

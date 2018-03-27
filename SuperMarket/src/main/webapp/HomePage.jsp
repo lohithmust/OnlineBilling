@@ -4,16 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<link rel="stylesheet" type="text/css" href="homepage.css">
 <title>Online Billing</title>
 </head>
 <body>
 	<center>
-		<h1>Welcome To Online Billing</h1>
+	<div>
+		<h1 class =heading>Welcome To Online Billing</h1>
+	</div>
 	</center>
 	<div>
 		<center>
 		  <form action="login" method=post>
-			<table cellspacing="5">
+			
 			  <input type=hidden name=loginas value=companylogin>
 				<tr>
 					<td><label>Company User</label></td>

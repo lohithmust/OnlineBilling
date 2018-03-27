@@ -40,7 +40,7 @@
 	           
 	           </c:forEach> 
 	          
-		
+		   Total Price  = ${total}
 	
 	</textarea>
 

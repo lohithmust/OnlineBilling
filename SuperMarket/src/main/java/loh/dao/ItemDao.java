@@ -41,7 +41,7 @@ public class ItemDao {
 	}
 
 
-	public List itemList(int id) {
+	public List<Item> itemList(int id) {
 
 		List <Item> itemList = null; 
 

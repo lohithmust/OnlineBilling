@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="login.css">
+
 <title>Welcome To LoginPage</title>
 </head>
 <body>
@@ -15,8 +17,6 @@
 <a href="addCashier.jsp">Add Cashier</a>
 <a href="deletecashier">Delete Cashier</a>
 <a href="Update">Update</a>
-
-
 
 </body>
 </html>

@@ -15,6 +15,11 @@ import loh.dto.Company;
 import loh.dto.Item;
 
 public class Helper {
+	List<Item> billedItem = new ArrayList<Item>();
+
+	public Helper() {
+		System.out.println("creating new object");
+	}
 
 	public int addCompany(Company register) {
 
@@ -112,7 +117,9 @@ public class Helper {
 		return 0;
 
 	}
-List<Item> items= new ArrayList<>();
+
+	List<Item> items = new ArrayList<>();
+
 	public List<Item> itemList(HttpServletRequest request) {
 
 		ItemDao itemdao = new ItemDao();
@@ -125,20 +132,17 @@ List<Item> items= new ArrayList<>();
 		return items;
 
 	}
-	 List <Item> billedItem = new  ArrayList<Item>();
-	public List<Item> addItemsSelected(String itemcode,HttpServletRequest request) {
-		
+
+	public List<Item> addItemsSelected(String itemcode, HttpServletRequest request) {
 		items = itemList(request);
-		
-		System.out.println("hee"+items);
-		for (Item item :  items) {
-             
+		for (Item item : items) {
+
 			if (item.getItemCode().equalsIgnoreCase(itemcode)) {
-				
-                System.out.println(item);
-                billedItem.add(item);
-			}                
+				System.out.println("you can add");
+				billedItem.add(item);
+			}
 		}
+		System.out.println(billedItem.size());
 		return billedItem;
 	}
 }
